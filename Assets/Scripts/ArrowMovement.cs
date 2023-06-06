@@ -5,25 +5,24 @@ using UnityEngine;
 public class ArrowMovement : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
-    [SerializeField] GameObject arrowIndicator;
-    [SerializeField] GameObject arrow;
-    [SerializeField] GameObject arrowHead;
+    [SerializeField] public SpriteRenderer arrowHead;
 
     void Awake() {
-        playerController = GetComponent<PlayerController>();    
-    }
-    void Update()
-    {
-        
+        playerController = FindObjectOfType<PlayerController>();   
+        arrowHead = GetComponent<SpriteRenderer>();
     }
 
     public void aim() {
         
-        Vector3 rotation = playerController.crosshairposition - playerController.transform.position;
-        float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+        if(playerController.isAimingArrow) {
+            
+            arrowHead.enabled = true;
+            transform.position = playerController.crosshairposition;
 
-        arrowHead.transform.rotation = Quaternion.Euler(0,0,rotZ);
-        arrow.transform.rotation = Quaternion.Euler(0,0,rotZ);
+            Vector3 rotation = playerController.crosshairposition - playerController.firstPos;
+            float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
 
+            arrowHead.transform.rotation = Quaternion.Euler(0,0,rotZ -90);
+        }
     }
 }

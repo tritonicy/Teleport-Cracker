@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8081501528526664679}
   - component: {fileID: 6031038121706639791}
   m_Layer: 0
-  m_Name: Circle
-  m_TagString: Circle
+  m_Name: portalOut
+  m_TagString: portalout
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -6,7 +6,8 @@ TagManager:
   tags:
   - Arrow
   - ArrowHead
-  - Circle
+  - portalout
+  - portalentry
   layers:
   - Default
   - TransparentFX

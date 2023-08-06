@@ -9,12 +9,15 @@ public class BulletBehaviour : MonoBehaviour
     PlayerController playerController;
     ArrowMovement arrowMovement;
     PowerBar powerBar;
+    Vector2 bulletpos;
 
 
     Rigidbody2D myRigidbody;
 
     float bulletRotz;
-    float bulletVelocity;
+    Vector2 bulletVelocity;
+    float beforeShootFirstposx;
+    float beforeShootFirstposy;
 
     void Start()
     {
@@ -23,13 +26,21 @@ public class BulletBehaviour : MonoBehaviour
         arrowMovement = FindObjectOfType<ArrowMovement>();
         powerBar = FindObjectOfType<PowerBar>();
 
-        myRigidbody = bullet.GetComponent<Rigidbody2D>();
-        
+    }
+    void Update() {
+        if(playerController.isAimingArrow) {
+            beforeShootFirstposx = playerController.firstPos.x;
+            beforeShootFirstposy = playerController.firstPos.y;
+        }
         bulletRotz = arrowMovement.initialRotz;
-        bulletVelocity = powerBar.fillAmount;
     }
 
-    void instantiateBullet() {
 
+    public void instantiateBullet() {
+        bulletVelocity = new Vector2 (playerController.crosshairposition.x-beforeShootFirstposx,playerController.crosshairposition.y-beforeShootFirstposy);
+        GameObject instantiatedBullet = Instantiate(bullet,playerController.firstPos,Quaternion.identity);
+        myRigidbody = instantiatedBullet.GetComponent<Rigidbody2D>();
+        myRigidbody.velocity = bulletVelocity * 1.5f;
+        instantiatedBullet.transform.rotation = Quaternion.Euler(0,0,bulletRotz -90);
     }
 }

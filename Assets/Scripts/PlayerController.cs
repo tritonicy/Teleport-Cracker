@@ -5,12 +5,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {   
-    public  Vector3 firstPos;
+    public Vector3 firstPos;
     public Vector3 crosshairposition;
     public bool isAimingArrow = false;
 
     [SerializeField] GameObject crosshair;
     [SerializeField] ArrowMovement arrowMovement;
+    [SerializeField] BulletBehaviour bulletBehaviour;
     [SerializeField] Canvas prefabPowerBar;
 
     Canvas instantiatedObj;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake() {
         arrowMovement = FindObjectOfType<ArrowMovement>();
+        bulletBehaviour = FindObjectOfType<BulletBehaviour>();
     }
     void Update()
     {
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
         else{
             arrowMovement.arrowHead.enabled = false;
         }
-        Debug.Log("Hello World");
+        Debug.Log(Camera.main.WorldToViewportPoint(crosshairposition));
     }
 
     Vector3 moveCrosshair() {
@@ -56,14 +58,15 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnFire() {
-        firstPos = crosshairposition;
 
         if(isAimingArrow) {
             isAimingArrow = false;
             Destroy(instantiatedObj.gameObject);
+            bulletBehaviour.instantiateBullet();
         }
         else{
             if(Camera.main.WorldToViewportPoint(crosshairposition).x < 0.5f) {
+                firstPos = crosshairposition;
                 isAimingArrow = true;
                 instantiatedObj = Instantiate(prefabPowerBar,crosshairposition,Quaternion.identity);
                 instantiatedObjRect = instantiatedObj.GetComponent<RectTransform>();

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Arrow
   - ArrowHead
+  - Circle
   layers:
   - Default
   - TransparentFX
@@ -51,4 +52,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3217873271
+    locked: 0
+  - name: Portal
+    uniqueID: 152577363
     locked: 0

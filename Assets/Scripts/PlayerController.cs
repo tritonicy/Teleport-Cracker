@@ -12,6 +12,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ArrowMovement arrowMovement;
     [SerializeField] Canvas prefabPowerBar;
     Canvas instantiatedObj;
+    RectTransform instantiatedObjRect;
+
+
+    
 
 
     private void Awake() {
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
         crosshairPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         crosshairPosition.z = 0f;
         transform.position = crosshairPosition;
+        
         if(isAimingArrow) {
             crosshair.transform.position = firstPos;
         }
@@ -42,12 +47,13 @@ public class PlayerController : MonoBehaviour
         }
         if(FindObjectsOfType<Canvas>().Length > 0 ) {
             
-            instantiatedObj.transform.position = Camera.main.WorldToViewportPoint(crosshairPosition);
+
+            Vector2 crosshairScreenPos = new Vector2(crosshairPosition.x + 3, crosshairPosition.y + 2);
+            
+            instantiatedObjRect.anchoredPosition = crosshairScreenPos;
             
         }
-
         return crosshairPosition;
-
     }
 
     void OnFire() {
@@ -55,14 +61,14 @@ public class PlayerController : MonoBehaviour
 
         if(isAimingArrow) {
             isAimingArrow = false;
-            Destroy(instantiatedObj);
+            Destroy(instantiatedObj.gameObject);
         }
         else{
-            isAimingArrow = true;
-            instantiatedObj = Instantiate(prefabPowerBar,transform.position,Quaternion.identity);
-            
-            
+            if(Camera.main.WorldToViewportPoint(crosshairposition).x < 0.5f) {
+                isAimingArrow = true;
+                instantiatedObj = Instantiate(prefabPowerBar,crosshairposition,Quaternion.identity);
+                instantiatedObjRect = instantiatedObj.GetComponent<RectTransform>();
+            }
         }
     }
-    
 }

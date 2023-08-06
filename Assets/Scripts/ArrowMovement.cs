@@ -6,6 +6,7 @@ public class ArrowMovement : MonoBehaviour
 {
     [SerializeField] PlayerController playerController;
     [SerializeField] public SpriteRenderer arrowHead;
+    public float initialRotz;
 
     void Awake() {
         playerController = FindObjectOfType<PlayerController>();   
@@ -21,6 +22,7 @@ public class ArrowMovement : MonoBehaviour
 
             Vector3 rotation = playerController.crosshairposition - playerController.firstPos;
             float rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;
+            initialRotz = rotZ;
 
             arrowHead.transform.rotation = Quaternion.Euler(0,0,rotZ -90);
         }

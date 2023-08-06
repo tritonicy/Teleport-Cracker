@@ -10,11 +10,6 @@ public class PortalBehaviour : MonoBehaviour
     private void Awake() {
         playerController = FindObjectOfType<PlayerController>();
     }
-    void Start()
-    {
-        
-    }
-
 
     void Update()
     {
@@ -26,7 +21,7 @@ public class PortalBehaviour : MonoBehaviour
     void createPortal() {
         float randomX = Random.Range(0.5f,1f);
         float randomY = Random.Range(0f,1f);
-        Vector3 randNum = new Vector3 (randomX,randomY,0);
+        Vector3 randNum = new Vector3 (randomX,randomY,1f);
         GameObject portal = Instantiate(portalPrefab,Camera.main.ViewportToWorldPoint(randNum),Quaternion.identity);
     }
 }

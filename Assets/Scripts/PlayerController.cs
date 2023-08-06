@@ -8,15 +8,13 @@ public class PlayerController : MonoBehaviour
     public  Vector3 firstPos;
     public Vector3 crosshairposition;
     public bool isAimingArrow = false;
+
     [SerializeField] GameObject crosshair;
     [SerializeField] ArrowMovement arrowMovement;
     [SerializeField] Canvas prefabPowerBar;
+
     Canvas instantiatedObj;
     RectTransform instantiatedObjRect;
-
-
-    
-
 
     private void Awake() {
         arrowMovement = FindObjectOfType<ArrowMovement>();
@@ -30,6 +28,7 @@ public class PlayerController : MonoBehaviour
         else{
             arrowMovement.arrowHead.enabled = false;
         }
+        Debug.Log("Hello World");
     }
 
     Vector3 moveCrosshair() {

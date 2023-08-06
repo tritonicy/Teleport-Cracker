@@ -141,6 +141,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalPrefab: {fileID: 8342484991041007911, guid: 79729d5604a769243b89d3321cc36afa, type: 3}
+--- !u!114 &14372111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 14372108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bf6977601f5f44bb0544baf5fb0af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 8668749442863395107, guid: 484bdaeb99d264d43a1dbef7fa06d0a7, type: 3}
 --- !u!1 &115828843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3155813913999043781, guid: cd74bc302e84f9e45ae08417427a6642, type: 3}

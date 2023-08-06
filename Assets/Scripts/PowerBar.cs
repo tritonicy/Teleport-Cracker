@@ -7,6 +7,7 @@ public class PowerBar : MonoBehaviour
 {
     Slider slider;
     [SerializeField] PlayerController playerController;
+    public float fillAmount;
 
 
     private void Update() {
@@ -19,7 +20,7 @@ public class PowerBar : MonoBehaviour
     }
 
     void updateBarPower() {
-        float fillAmount = Mathf.Clamp(Mathf.Sqrt(Mathf.Pow(playerController.crosshairposition.x-playerController.firstPos.x,2f)
+        fillAmount = Mathf.Clamp(Mathf.Sqrt(Mathf.Pow(playerController.crosshairposition.x-playerController.firstPos.x,2f)
          + Mathf.Pow(playerController.crosshairposition.y-playerController.firstPos.y,2)) * 0.1f,0f,1f);
 
         slider.value = fillAmount;

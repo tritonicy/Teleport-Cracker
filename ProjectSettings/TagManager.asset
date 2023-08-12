@@ -8,6 +8,7 @@ TagManager:
   - ArrowHead
   - portalout
   - portalentry
+  - bullet
   layers:
   - Default
   - TransparentFX
@@ -17,12 +18,12 @@ TagManager:
   - UI
   - Background
   - Tilemap
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Portalin
+  - Portalout
+  - Bullet
+  - RightZone
+  - LeftZone
+  - Box
   - 
   - 
   - 

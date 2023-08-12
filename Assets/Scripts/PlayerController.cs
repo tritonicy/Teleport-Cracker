@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] BulletBehaviour bulletBehaviour;
     [SerializeField] Canvas prefabPowerBar;
 
-    Canvas instantiatedObj;
+    Canvas instantiatedPowerBar;
     RectTransform instantiatedObjRect;
 
     private void Awake() {
@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
         else{
             arrowMovement.arrowHead.enabled = false;
         }
-        Debug.Log(Camera.main.WorldToViewportPoint(crosshairposition));
     }
 
     Vector3 moveCrosshair() {
@@ -61,16 +60,22 @@ public class PlayerController : MonoBehaviour
 
         if(isAimingArrow) {
             isAimingArrow = false;
-            Destroy(instantiatedObj.gameObject);
-            bulletBehaviour.instantiateBullet();
+            Destroy(instantiatedPowerBar.gameObject);
+            if(GameObject.FindGameObjectsWithTag("bullet").Length < 1) {
+                bulletBehaviour.InstantiateBullet();
+            }
+            
         }
         else{
             if(Camera.main.WorldToViewportPoint(crosshairposition).x < 0.5f) {
                 firstPos = crosshairposition;
                 isAimingArrow = true;
-                instantiatedObj = Instantiate(prefabPowerBar,crosshairposition,Quaternion.identity);
-                instantiatedObjRect = instantiatedObj.GetComponent<RectTransform>();
+                instantiatedPowerBar = Instantiate(prefabPowerBar,crosshairposition,Quaternion.identity);
+                instantiatedObjRect = instantiatedPowerBar.GetComponent<RectTransform>();
             }
         }
+    }
+    void OnDeleteBullet() {
+        Destroy(bulletBehaviour.instantiatedBullet.gameObject);
     }
 }

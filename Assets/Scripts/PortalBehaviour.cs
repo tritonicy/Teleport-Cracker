@@ -13,7 +13,7 @@ public class PortalBehaviour : MonoBehaviour
 
     public GameObject portalentry;
     public GameObject portalout;
-    
+
     private void Awake() {
         playerController = FindObjectOfType<PlayerController>();
         bulletBehaviour = FindObjectOfType<BulletBehaviour>();
@@ -34,7 +34,6 @@ public class PortalBehaviour : MonoBehaviour
         float randomY = Random.Range(0.05f,0.95f);
         Vector3 randNum = new Vector3 (randomX1,randomY,1f);
         portalentry = Instantiate(portalEntryPrefab,Camera.main.ViewportToWorldPoint(randNum),Quaternion.identity);
-
     }
     void createOutPortal() {
         float randomX2 = Random.Range(0.55f,0.95f);
@@ -42,6 +41,5 @@ public class PortalBehaviour : MonoBehaviour
         Vector3 randNum = new Vector3 (randomX2,randomY,1f);
         portalout = Instantiate(portalOutPrefab,Camera.main.ViewportToWorldPoint(randNum),Quaternion.identity);
     }
-
 
 }

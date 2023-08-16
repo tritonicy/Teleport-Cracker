@@ -45,9 +45,8 @@ public class PlayerController : MonoBehaviour
         else{
             crosshair.transform.position = crosshairPosition;
         }
-        if(FindObjectsOfType<Canvas>().Length > 0 ) {
+        if(GameObject.FindGameObjectsWithTag("powerbar").Length > 0 ) {
             
-
             Vector2 crosshairScreenPos = new Vector2(crosshairPosition.x + 3, crosshairPosition.y + 2);
             
             instantiatedObjRect.anchoredPosition = crosshairScreenPos;

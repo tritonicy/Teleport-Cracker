@@ -9,6 +9,7 @@ TagManager:
   - portalout
   - portalentry
   - bullet
+  - powerbar
   layers:
   - Default
   - TransparentFX

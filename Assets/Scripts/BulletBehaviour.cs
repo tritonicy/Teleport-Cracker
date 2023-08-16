@@ -5,17 +5,12 @@ using UnityEngine.Rendering;
 
 public class BulletBehaviour : MonoBehaviour
 {
-    public GameObject instantiatedBullet;
-
-    public static BulletBehaviour Instance;
-
+    [HideInInspector] public GameObject instantiatedBullet;
     [SerializeField] GameObject bulletPrefab;
-
 
     PlayerController playerController;
     ArrowMovement arrowMovement;
     PowerBar powerBar;
-    [SerializeField] GameObject rightZone;
 
   
     Rigidbody2D myRigidbody;
@@ -26,16 +21,13 @@ public class BulletBehaviour : MonoBehaviour
     float beforeShootFirstposx;
     float beforeShootFirstposy;
 
-    private void Awake() {
-        Instance = this;
-    }
+
     void Start()
     {
 
         playerController = FindObjectOfType<PlayerController>();
         arrowMovement = FindObjectOfType<ArrowMovement>();
         powerBar = FindObjectOfType<PowerBar>();
-        rightZone.GetComponent<BoxCollider2D>();
 
 
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ArrowMovement arrowMovement;
     [SerializeField] BulletBehaviour bulletBehaviour;
     [SerializeField] Canvas prefabPowerBar;
+    [SerializeField] GameObject playableZone;
 
     Canvas instantiatedPowerBar;
     RectTransform instantiatedObjRect;
@@ -28,7 +30,7 @@ public class PlayerController : MonoBehaviour
             arrowMovement.aim();
         }
         else{
-            arrowMovement.arrowHead.enabled = false;
+            Destroy(arrowMovement.arrowHead.gameObject);
         }
     }
 
@@ -66,9 +68,10 @@ public class PlayerController : MonoBehaviour
             
         }
         else{
-            if(Camera.main.WorldToViewportPoint(crosshairposition).x < 0.5f) {
+            if(playableZone.GetComponent<EdgeCollider2D>().bounds.Contains(crosshairposition)) {
                 firstPos = crosshairposition;
                 isAimingArrow = true;
+                arrowMovement.InstantiateArrow();
                 instantiatedPowerBar = Instantiate(prefabPowerBar,crosshairposition,Quaternion.identity);
                 instantiatedObjRect = instantiatedPowerBar.GetComponent<RectTransform>();
             }

@@ -22,10 +22,10 @@ TagManager:
   - Portalin
   - Portalout
   - Bullet
-  - RightZone
-  - LeftZone
+  - UnplayableZone
+  - PlayableZone
   - Box
-  - 
+  - Crosshair
   - 
   - 
   - 

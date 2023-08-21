@@ -11,6 +11,7 @@ public class Pickups : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        CameraShake.Instance.startShake();
         pickupCoin();
         if(other.gameObject.CompareTag("bullet")) {
             Destroy(coin.gameObject);

@@ -7,17 +7,15 @@ public class BulletBehaviour : MonoBehaviour
 {
     [HideInInspector] public GameObject instantiatedBullet;
     [SerializeField] GameObject bulletPrefab;
-
     PlayerController playerController;
     ArrowMovement arrowMovement;
-    PowerBar powerBar;
 
   
     Rigidbody2D myRigidbody;
 
 
     float bulletRotz;
-    Vector2 bulletVelocity;
+    public Vector2 bulletVelocity;
     float beforeShootFirstposx;
     float beforeShootFirstposy;
 
@@ -27,9 +25,7 @@ public class BulletBehaviour : MonoBehaviour
 
         playerController = FindObjectOfType<PlayerController>();
         arrowMovement = FindObjectOfType<ArrowMovement>();
-        powerBar = FindObjectOfType<PowerBar>();
-
-
+        
     }
     void Update() {
         if(playerController.isAimingArrow) {

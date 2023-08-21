@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2482228685885021068}
   - component: {fileID: 2482228685885021070}
   - component: {fileID: 2482228685885021069}
+  - component: {fileID: 678313358}
+  - component: {fileID: 481454080609023422}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -128,7 +130,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cf30ef186f9ef4abdfc6f90b530d2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firstPos: {x: 0, y: 0, z: 0}
   crosshairposition: {x: 0, y: 0, z: 0}
   isAimingArrow: 0
+  crosshair: {fileID: 0}
+  arrowMovement: {fileID: 0}
+  bulletBehaviour: {fileID: 0}
+  prefabPowerBar: {fileID: 4279146648502662751, guid: fb9c7f68b4cdbf14ebec9103cc8de06e, type: 3}
+  playableZone: {fileID: 0}
+--- !u!114 &678313358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2482228685885021058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9e4207a482abf41b80428d32c9602a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
+  arrowHeadPrefab: {fileID: 3389590524229165421, guid: 51e3773285323bb46b94032c30a85588, type: 3}
   arrowHead: {fileID: 0}
-  arrow: {fileID: 0}
+  initialRotz: 0
+--- !u!114 &481454080609023422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2482228685885021058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02bf6977601f5f44bb0544baf5fb0af6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  instantiatedBullet: {fileID: 0}
+  bulletPrefab: {fileID: 8668749442863395107, guid: 484bdaeb99d264d43a1dbef7fa06d0a7, type: 3}
+  bulletVelocity: {x: 0, y: 0}

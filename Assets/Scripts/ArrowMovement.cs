@@ -31,4 +31,7 @@ public class ArrowMovement : MonoBehaviour
     public void InstantiateArrow() {
         arrowHead = Instantiate(arrowHeadPrefab,playerController.crosshairposition,Quaternion.identity);
     }
+    public void DestroyArrow() {
+        Destroy(arrowHead.gameObject);
+    }
 }

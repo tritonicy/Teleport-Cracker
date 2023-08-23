@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Canvas prefabPowerBar;
     [SerializeField] GameObject playableZone;
 
-    Canvas instantiatedPowerBar;
+    public Canvas instantiatedPowerBar;
     RectTransform instantiatedObjRect;
 
     private void Awake() {
@@ -51,14 +51,20 @@ public class PlayerController : MonoBehaviour
             
             Vector2 crosshairScreenPos = new Vector2(crosshairPosition.x + 3, crosshairPosition.y + 2);
             
+        if(instantiatedObjRect != null) {
             instantiatedObjRect.anchoredPosition = crosshairScreenPos;
+        }
+        else{
+            ;
+        }
             
         }
         return crosshairPosition;
     }
 
     void OnFire() {
-
+        AudioManager.Instance.Play("click");
+        
         if(isAimingArrow) {
             isAimingArrow = false;
             Destroy(instantiatedPowerBar.gameObject);
@@ -68,16 +74,20 @@ public class PlayerController : MonoBehaviour
             
         }
         else{
-            if(playableZone.GetComponent<EdgeCollider2D>().bounds.Contains(crosshairposition)) {
-                firstPos = crosshairposition;
-                isAimingArrow = true;
-                arrowMovement.InstantiateArrow();
-                instantiatedPowerBar = Instantiate(prefabPowerBar,crosshairposition,Quaternion.identity);
-                instantiatedObjRect = instantiatedPowerBar.GetComponent<RectTransform>();
+            if(PlayerStats.playerAttempsLeft > 0) {
+                if(playableZone.GetComponent<EdgeCollider2D>().bounds.Contains(crosshairposition)) {
+                    firstPos = crosshairposition;
+                    isAimingArrow = true;
+                    arrowMovement.InstantiateArrow();
+                    instantiatedPowerBar = Instantiate(prefabPowerBar,crosshairposition,Quaternion.identity);
+                if(instantiatedPowerBar.GetComponent<RectTransform>() != null) {
+                    instantiatedObjRect = instantiatedPowerBar.GetComponent<RectTransform>();
+                }
+                else
+                    return;
+            }
+            
             }
         }
-    }
-    void OnDeleteBullet() {
-        Destroy(bulletBehaviour.instantiatedBullet.gameObject);
     }
 }

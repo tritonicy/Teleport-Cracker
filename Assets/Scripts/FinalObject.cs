@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class FinalObject : MonoBehaviour
 {
-    CircleCollider2D circleCollider2D;
-    private void Awake() {
-        circleCollider2D = this.GetComponent<CircleCollider2D>();
-    }
-
     private void OnCollisionEnter2D(Collision2D other) {
+        Destroy(FindObjectOfType<BulletBehaviour>().instantiatedBullet.gameObject);
         SceneManagement.Instance.LoadNextLevel();
-        Debug.Log(SceneManagement.currentLevelbyIndex);
     }
 }

@@ -8,26 +8,54 @@ public class SceneManagement : MonoBehaviour
 {
     public static SceneManagement Instance; 
     public static int currentLevelbyIndex;
+    private bool isListened;
     private void Awake() {
-        Instance = this;
+
+        if(Instance == null) {
+            Instance = this;
+        }
+        else{
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+
         currentLevelbyIndex = SceneManager.GetActiveScene().buildIndex;
     }
-    private void Start() {
-        if(FindObjectsOfType<SceneManagement>().Length > 0) {
-            DontDestroyOnLoad(FindObjectOfType<SceneManagement>().gameObject);
-        }
-    }
+
     public enum Scene{
         MainMenu,
         Level1
     };
 
     public void LoadNextLevel() {
-        SceneManager.LoadScene(++currentLevelbyIndex);
+        StartCoroutine(LoadNextSceneRoutine());
     }
 
-    public void LoadNextScene(Scene scene) {
+    private IEnumerator LoadNextSceneRoutine(Scene scene) {
+        Animation.Instance.PlayFadein();
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(scene.ToString());
+        Animation.Instance.PlayFadeout();
+
         currentLevelbyIndex++;
+
+        AudioManager.Instance.StopPlayAll();
+        AudioManager.Instance.Play("snow");
+    }
+    public void LoadNextScene(Scene scene) {
+        StartCoroutine(LoadNextSceneRoutine(scene));
+    }
+    
+        private IEnumerator LoadNextSceneRoutine() {
+        Animation.Instance.PlayFadein();
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(++currentLevelbyIndex);
+        Animation.Instance.PlayFadeout();
+
+        currentLevelbyIndex++;
+
+        AudioManager.Instance.StopPlayAll();
+        AudioManager.Instance.Play("snow");
     }
 } 

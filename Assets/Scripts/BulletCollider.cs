@@ -6,16 +6,13 @@ using UnityEngine;
 
 public class BulletCollider : MonoBehaviour
 {
-    bool isFirstUpdate = true;
     BulletBehaviour bulletBehaviour;
-    PowerBar powerBar;
     ParticleSystem m_particleSystem;
 
     Vector2 firstDir;
     void Start()
     {
         bulletBehaviour = FindObjectOfType<BulletBehaviour>();
-        powerBar = FindObjectOfType<PowerBar>();
         m_particleSystem = GetComponentInChildren<ParticleSystem>();
     }
     private void Update() {
@@ -24,6 +21,8 @@ public class BulletCollider : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         m_particleSystem.Play();
+        AudioManager.Instance.Play("boing");
+        CameraShake.Instance.startShake();
 
         Vector2 wallNormal = other.contacts[0].normal;
 

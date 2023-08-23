@@ -10,6 +10,7 @@ TagManager:
   - portalentry
   - bullet
   - powerbar
+  - musicbutton
   layers:
   - Default
   - TransparentFX
@@ -58,4 +59,7 @@ TagManager:
     locked: 0
   - name: Portal
     uniqueID: 152577363
+    locked: 0
+  - name: Crosshair
+    uniqueID: 1126161309
     locked: 0

@@ -16,6 +16,5 @@ public class Pickups : MonoBehaviour
         if(other.gameObject.CompareTag("bullet")) {
             Destroy(coin.gameObject);
         }
-    
     }
 }

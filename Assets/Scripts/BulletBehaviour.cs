@@ -38,10 +38,10 @@ public class BulletBehaviour : MonoBehaviour
 
 
     public void InstantiateBullet() {
-        bulletVelocity = new Vector2 (playerController.crosshairposition.x-beforeShootFirstposx,playerController.crosshairposition.y-beforeShootFirstposy);
+        bulletVelocity = new Vector2 (Mathf.Clamp(playerController.crosshairposition.x-beforeShootFirstposx,-15f,15f),Mathf.Clamp(playerController.crosshairposition.y-beforeShootFirstposy,-15f,15f));
         instantiatedBullet = Instantiate(bulletPrefab,playerController.firstPos,Quaternion.identity);
         myRigidbody = instantiatedBullet.GetComponent<Rigidbody2D>();
-        myRigidbody.velocity = bulletVelocity * 1.5f;
+        myRigidbody.velocity = bulletVelocity * 2f;
         instantiatedBullet.transform.rotation = Quaternion.Euler(0,0,bulletRotz -90);
     }
 

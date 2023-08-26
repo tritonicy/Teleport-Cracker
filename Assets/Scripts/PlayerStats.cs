@@ -29,7 +29,6 @@ public class PlayerStats : MonoBehaviour
   
         if(Input.GetKeyDown("x") && playerAttempsLeft > 0) {
             if(GameObject.FindGameObjectsWithTag("bullet").Length > 0) {
-                    Debug.Log("31");
                     Destroy(FindObjectOfType<BulletBehaviour>().instantiatedBullet.gameObject);
                     playerAttempsLeft -= 1;
             }

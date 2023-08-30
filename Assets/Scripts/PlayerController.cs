@@ -75,7 +75,8 @@ public class PlayerController : MonoBehaviour
         }
         else{
             if(PlayerStats.playerAttempsLeft > 0) {
-                if(playableZone.GetComponent<EdgeCollider2D>().bounds.Contains(crosshairposition)) {
+                Debug.Log("31");
+                if(playableZone.GetComponent<PolygonCollider2D>().bounds.Contains(crosshairposition)) {
                     firstPos = crosshairposition;
                     isAimingArrow = true;
                     arrowMovement.InstantiateArrow();

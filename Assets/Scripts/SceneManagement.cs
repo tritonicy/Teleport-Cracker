@@ -8,7 +8,6 @@ public class SceneManagement : MonoBehaviour
 {
     public static SceneManagement Instance; 
     public static int currentLevelbyIndex;
-    private bool isListened;
     private void Awake() {
 
         if(Instance == null) {
@@ -47,13 +46,11 @@ public class SceneManagement : MonoBehaviour
         StartCoroutine(LoadNextSceneRoutine(scene));
     }
     
-        private IEnumerator LoadNextSceneRoutine() {
+    private IEnumerator LoadNextSceneRoutine() {
         Animation.Instance.PlayFadein();
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(++currentLevelbyIndex);
         Animation.Instance.PlayFadeout();
-
-        currentLevelbyIndex++;
 
         AudioManager.Instance.StopPlayAll();
         AudioManager.Instance.Play("snow");

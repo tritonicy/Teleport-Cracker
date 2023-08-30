@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -6061407250847288011}
   - component: {fileID: -6439581527273212647}
   m_Layer: 8
-  m_Name: portalEntry
+  m_Name: portalEntry 1
   m_TagString: portalentry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

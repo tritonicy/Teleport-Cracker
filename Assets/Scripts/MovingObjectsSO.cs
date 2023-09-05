@@ -6,5 +6,5 @@ public class MovingObjectsSO : ScriptableObject
 {
     public Vector3 velocity;
     public float moveTime;
-
+    public int moveType;
 }

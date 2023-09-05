@@ -63,7 +63,10 @@ public class PlayerController : MonoBehaviour
     }
 
     void OnFire() {
-        AudioManager.Instance.Play("click");
+        if(AudioManager.Instance != null) {
+            AudioManager.Instance.Play("click");
+        }
+        
         
         if(isAimingArrow) {
             isAimingArrow = false;
@@ -75,7 +78,6 @@ public class PlayerController : MonoBehaviour
         }
         else{
             if(PlayerStats.playerAttempsLeft > 0) {
-                Debug.Log("31");
                 if(playableZone.GetComponent<PolygonCollider2D>().bounds.Contains(crosshairposition)) {
                     firstPos = crosshairposition;
                     isAimingArrow = true;

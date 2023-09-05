@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996d6d5f805ccec4592803a22b75cba9, type: 3}
   m_Name: MovingObject1
   m_EditorClassIdentifier: 
-  velocity: {x: -0.01, y: -0.01, z: 0}
-  moveTime: 2
+  velocity: {x: 0.1, y: 0, z: 0}
+  moveTime: 3
+  moveType: 1

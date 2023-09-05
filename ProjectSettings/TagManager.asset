@@ -28,9 +28,9 @@ TagManager:
   - Box
   - Crosshair
   - OutsideBoxes
-  - 
-  - 
-  - 
+  - Obstacle
+  - FinalObject
+  - Coin
   - 
   - 
   - 

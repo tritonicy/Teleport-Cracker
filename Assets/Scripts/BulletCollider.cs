@@ -20,9 +20,10 @@ public class BulletCollider : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D other) {
-        Debug.Log("hit");
         m_particleSystem.Play();
-        AudioManager.Instance.Play("boing");
+        if(AudioManager.Instance != null) {
+            AudioManager.Instance.Play("boing");}
+            
         CameraShake.Instance.startShake();
 
         Vector2 wallNormal = other.contacts[0].normal;

@@ -7,7 +7,7 @@ public class Pickups : MonoBehaviour
     [SerializeField] GameObject coin;
     
     void pickupCoin() {
-        PlayerStats.playerScore += 100;
+        GameManager.playerScore += 100;
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

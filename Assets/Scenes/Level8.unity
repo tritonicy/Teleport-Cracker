@@ -1375,6 +1375,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6439581527273212647, guid: a8aca12762b20834eaad57850e8e045c, type: 3}
+      propertyPath: portalOut
+      value: 
+      objectReference: {fileID: 1995627417}
     - target: {fileID: 8081501528526664679, guid: a8aca12762b20834eaad57850e8e045c, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1720,6 +1724,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79729d5604a769243b89d3321cc36afa, type: 3}
+--- !u!1 &1995627417 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8342484991041007911, guid: 79729d5604a769243b89d3321cc36afa, type: 3}
+  m_PrefabInstance: {fileID: 1995627416}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2107112223
 PrefabInstance:
   m_ObjectHideFlags: 0

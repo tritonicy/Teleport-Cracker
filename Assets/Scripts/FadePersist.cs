@@ -16,4 +16,5 @@ public class FadePersist : MonoBehaviour
         }
         DontDestroyOnLoad(gameObject);
     }
+
 }

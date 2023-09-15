@@ -8,7 +8,14 @@ public class Animation : MonoBehaviour
     public static Animation Instance;
 
     private void Awake() {
-        Instance = this;
+        if(Instance == null) {
+            Instance = this;
+        }
+        else{
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     public void PlayFadein() {

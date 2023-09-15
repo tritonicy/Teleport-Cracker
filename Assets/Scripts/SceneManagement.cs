@@ -37,10 +37,7 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene(scene.ToString());
         Animation.Instance.PlayFadeout();
 
-        currentLevelbyIndex++;
-
-        AudioManager.Instance.StopPlayAll();
-        AudioManager.Instance.Play("snow");
+        currentLevelbyIndex++;;
     }
     public void LoadNextScene(Scene scene) {
         StartCoroutine(LoadNextSceneRoutine(scene));
@@ -51,8 +48,5 @@ public class SceneManagement : MonoBehaviour
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(++currentLevelbyIndex);
         Animation.Instance.PlayFadeout();
-
-        AudioManager.Instance.StopPlayAll();
-        AudioManager.Instance.Play("snow");
     }
 } 

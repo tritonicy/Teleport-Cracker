@@ -10,9 +10,6 @@ public class PlayerStats : MonoBehaviour
 
     public static PlayerStats Instance;
 
-    public static int playerScore = 0;
-    public static int playerAttempsLeft = 5;
-    
     private void Awake() {
         if(Instance == null) {
             Instance = this;
@@ -24,19 +21,19 @@ public class PlayerStats : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     private void Update() {
-        scoreTXT.text = playerScore.ToString();
-        attemptTXT.text = playerAttempsLeft.ToString();
+        scoreTXT.text = GameManager.playerScore.ToString();
+        attemptTXT.text = GameManager.playerAttempsLeft.ToString();
   
-        if(Input.GetKeyDown("x") && playerAttempsLeft > 0) {
+        if(Input.GetKeyDown("x") && GameManager.playerAttempsLeft > 0) {
             if(GameObject.FindGameObjectsWithTag("bullet").Length > 0) {
                     Destroy(FindObjectOfType<BulletBehaviour>().instantiatedBullet.gameObject);
-                    playerAttempsLeft -= 1;
+                    GameManager.playerAttempsLeft -= 1;
             }
             else if(FindObjectOfType<PlayerController>().isAimingArrow) {
                     FindObjectOfType<PlayerController>().isAimingArrow = false;
                     Destroy(FindObjectOfType<PlayerController>().instantiatedPowerBar.gameObject);
                     FindObjectOfType<ArrowMovement>().DestroyArrow();
-                    playerAttempsLeft -= 1;
+                    GameManager.playerAttempsLeft -= 1;
             }
         }
     }  

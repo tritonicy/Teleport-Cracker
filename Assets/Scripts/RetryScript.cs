@@ -6,6 +6,7 @@ using TMPro;
 public class RetryScript : MonoBehaviour
 {
   public TextMeshProUGUI scoreText;
+  public TextMeshProUGUI highScoreText;
   public static RetryScript Instance;
 
     private void Awake() {
@@ -19,8 +20,9 @@ public class RetryScript : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     private void Update() {
-        if(PlayerStats.Instance != null) {
+        if(GameManager.Instance != null) {
             scoreText.text = GameManager.playerScore.ToString();
+            highScoreText.text = PlayerPrefs.GetInt("HighScore").ToString();
         }
     }
 }

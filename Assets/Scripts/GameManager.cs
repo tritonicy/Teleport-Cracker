@@ -13,6 +13,13 @@ public class GameManager : MonoBehaviour
     public static int playerAttempsLeft = 5;
     
 
+    private void OnEnable() {
+        Pickups.OnCoinCollected += pickupCoin;
+    }
+
+    private void OnDisable() {
+        Pickups.OnCoinCollected -= pickupCoin;
+    }
     private void Start() {
         if (Instance == null) {
             Instance = this;
@@ -38,6 +45,13 @@ public class GameManager : MonoBehaviour
         playerScore = 0;
         Destroy(FindObjectOfType<PlayerStats>().gameObject);
         SceneManagement.Instance.LoadNextScene(SceneManagement.Scene.MainMenu);
+    }
+    public static void pickupCoin() {
+        GameManager.playerScore += 100;
+
+        if(playerScore > PlayerPrefs.GetInt("HighScore",0)) {
+            PlayerPrefs.SetInt("HighScore",playerScore);
+        }
     }
 
     public void ExitButton() {

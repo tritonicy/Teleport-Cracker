@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Pickups : MonoBehaviour
 {
     [SerializeField] GameObject coin;
-    
-    void pickupCoin() {
-        GameManager.playerScore += 100;
-    }
+    public static event Action OnCoinCollected;
 
     private void OnTriggerEnter2D(Collider2D other) {
         CameraShake.Instance.startShake();
-        pickupCoin();
+        OnCoinCollected();
         if(other.gameObject.CompareTag("bullet")) {
             Destroy(coin.gameObject);
         }
